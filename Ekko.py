@@ -232,7 +232,7 @@ def abrir_notas():
     add_historico("Abrindo bloco de notas...")
 
 def previsao_tempo():
-    API = "496dc5d80e8c7667a9aaf0f7f9961c82"
+    API = "sua_chave_api"
     localizacao = geocoder.ip('me')  # 'me' significa o IP da máquina que está executando o código.
     lat = localizacao.latlng[0]
     lon = localizacao.latlng[1]
