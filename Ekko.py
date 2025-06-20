@@ -232,7 +232,7 @@ def abrir_notas():
     add_historico("Abrindo bloco de notas...")
 
 def previsao_tempo():
-    API = "sua_chave_api"
+    API = "a4664ab448fa346b80b7e985e2abe2a2"
     localizacao = geocoder.ip('me')  # 'me' significa o IP da máquina que está executando o código.
     lat = localizacao.latlng[0]
     lon = localizacao.latlng[1]
@@ -276,6 +276,14 @@ def abrir_explorador():
     os.system("start explorer")
     add_historico("Abrindo explorador de arquivos...")
 
+def tocar_rap():
+    webbrowser.open("https://music.youtube.com/playlist?list=PLWAtedjL1oPHcnH1uMc_6VBdxd0ABiScF")
+    add_historico("Abrindo playlist...")
+
+def tocar_japa():
+    webbrowser.open("https://music.youtube.com/playlist?list=PLWAtedjL1oPGlslaBkldhAN3g0A9p7vFa")
+    add_historico("Abrindo playlist...")
+
 # Função principal para interpretar comandos
 comandos = {
     "abrir navegador": abrir_navegador,
@@ -299,7 +307,9 @@ comandos = {
     "abrir epic games": abrir_epic,
     "previsão do tempo": previsao_tempo,
     "pesquisar": pesquisar_google,
-    "abrir explorador de arquivos": abrir_explorador
+    "abrir explorador de arquivos": abrir_explorador,
+    "tocar rap de anime": tocar_rap,
+    "tocar música japonesa": tocar_japa
 }
 
 def processar_comando(comando):
@@ -319,6 +329,8 @@ def processar_comando(comando):
         elif "abr" in comando:
             if "navega" not in comando and "steam" not in comando and "gerencia" not in comando and "tarefa" not in comando and "bloc" not in comando and "nota" not in comando and "epic" not in comando and "épic" not in comando and "explora" not in comando and "arquivo" not in comando:
                 add_historico("Não entendi o que devo abrir...")
+                if botao_falas.get() == "on":
+                    falar("Não entendi o que devo abrir....")
             elif melhor_correspondencia[0] == "abrir navegador":
                 abrir_navegador()
             elif melhor_correspondencia[0] == "abrir steam":
@@ -331,6 +343,8 @@ def processar_comando(comando):
                 abrir_explorador()
             else:
                 add_historico("Não entendi o que devo abrir...")
+                if botao_falas.get() == "on":
+                    falar("Não entendi o que devo abrir....")
         elif melhor_correspondencia[0] == "pesquisar":
             pesquisar_google(comando)
         else:
@@ -640,7 +654,8 @@ def abrir_lista_comandos():
     '13. Abrir Epic Games: Diga "Abre a Epic Games" ou "Epic Games abrir" para abrir a Epic Games automaticamente.',
     '14. Abrir bloco de notas: Diga "Abre o bloco de notas" para abrir o bloco de notas.',
     '15. Previsão do tempo: Diga "Previsão do tempo", e Ekko irá te dizer o clima, sensação térmica, temperatura atual, temperatura máxima e mínima da sua localização.',
-    '16. Pesquisar: Diga "Pesquise ..." completando com o que você quiser pesquisar, e Ekko vai abrir uma nova aba no seu navegador pesquisando o que você pediu.'
+    '16. Pesquisar: Diga "Pesquise ..." completando com o que você quiser pesquisar, e Ekko vai abrir uma nova aba no seu navegador pesquisando o que você pediu.',
+    '17. Abrir Explorador de Arquivos: Diga "Abre o explorador de arquivos", e Ekko irá abrir o explorador de arquivos do Windows.'
     ]
 
     for m in range(len(comandos_mensagens)):
